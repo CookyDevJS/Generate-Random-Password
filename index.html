@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/878e05ffb3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Password Generator Random </title>
+  </head>
+  <body>
+    <h2 class="main-heading">Password Generator Random</h2>
+    <main class="container">
+      <form id="submit">
+        <input type="text" class="hidden-text-input" />
+        <div class="text-output">
+          <span class="generated-password">PLNG4·&0J+-k,</span>
+          <div class="copy-section">
+            <span class="copy-confirmation-text"></span>
+            <i class="fa fa-copy"></i>
+          </div>
+        </div>
+        <div class="slider-section">
+          <div class="character-length-section">
+            <p>Character length</p>
+            <span class="slider-value">5</span>
+          </div>
+          <input
+            type="range"
+            min="0"
+            value="5"
+            step="1"
+            max="19"
+            class="slider"
+            id="myinput"
+          />
+          <div class="checkbox">
+            <input id="uppercase" type="checkbox" checked />
+            <label for="uppercase">Include Uppercase Letters</label>
+          </div>
+          <div class="checkbox">
+            <input id="lowercase" type="checkbox" checked />
+            <label for="lowercase">Include Lowercase Letters</label>
+          </div>
+          <div class="checkbox">
+            <input id="numbers" type="checkbox" checked />
+            <label for="numbers">Include Numbers</label>
+          </div>
+          <div class="checkbox">
+            <input id="symbols" type="checkbox" />
+            <label for="symbols">Include Symbols</label>
+          </div>
+          <div class="strength-section">
+            <p>STRENGTH</p>
+            <div class="strength-power-section">
+              <span class="strength-text">Medium</span>
+              <div class="strength-bars">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+              </div>
+            </div>
+          </div>
+          <button class="submit-btn" type="submit">
+            GENERATE <i class="fas fa-angle-right"></i>
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

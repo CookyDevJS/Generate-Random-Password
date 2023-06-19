@@ -1,0 +1,264 @@
+/* imports */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Colors */
+
+:root {
+  --main-bg-color: #18171f;
+  --secondary-bg-color: #1d1b26;
+  --main-font-color: #e6e5ea;
+  --secondary-font-color: #000000;
+  --bar-color-1: #f64a4a;
+  --bar-color-2: #fb7c58;
+  --bar-color-3: #fb7c58;
+  --utility-color: #00ff37;
+}
+
+/* Typography */
+
+h1,
+h2,
+body {
+  font-family: "JetBrains Mono", monospace;
+  font-style: normal;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 42px;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--secondary-font-color);
+}
+
+body {
+  font-size: 18px;
+  line-height: 24px;
+  background-color: var(--main-bg-color);
+  color: var(--main-font-color);
+}
+
+/* Main Section */
+
+.main-heading {
+  margin: 30px;
+  text-align: center;
+}
+
+.container {
+  width: 540px;
+  height: 632px;
+  margin: 0 auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.text-output {
+  height: 80px;
+  border: none;
+  font-size: 42px;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--main-font-color);
+}
+
+.text-output,
+.slider-section {
+  background-color: var(--secondary-bg-color);
+  padding: 20px;
+}
+
+.slider-section {
+  height: 510px;
+  margin-top: 20px;
+}
+
+.text-output {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.generated-password {
+  color: var(--secondary-font-color);
+}
+
+.copy-section {
+  font-size: 20px;
+  color: var(--utility-color);
+}
+
+.fa-copy {
+  transition: color 0.4s ease-in-out;
+}
+
+.fa-copy:hover {
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+/* Slider Section */
+
+.slider-section {
+  height: 510px;
+  margin-top: 20px;
+}
+
+#myinput {
+  height: 10px;
+  width: 100%;
+  outline: none;
+  -webkit-appearance: none;
+  margin: 40px 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  width: 30px;
+  -webkit-appearance: none;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.4s ease-in-out;
+}
+
+.character-length-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider-value {
+  color: var(--utility-color);
+  font-size: 30px;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: black;
+  border: 2px solid var(--utility-color);
+}
+
+/* Check Box Section */
+
+.checkbox {
+  margin-bottom: 20px;
+}
+
+input[type="checkbox"] {
+  width: 15px; /*Desired width*/
+  height: 15px; /*Desired height*/
+  cursor: pointer;
+  accent-color: var(--utility-color);
+}
+
+/* Strength Section */
+
+.strength-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--main-bg-color);
+  height: 72px;
+  margin-bottom: 20px;
+}
+
+.strength-section > p {
+  color: var(--secondary-font-color);
+}
+
+.strength-power-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.strength-bars {
+  display: flex;
+  justify-content: space-around;
+  width: 75px;
+}
+
+/* Initial bar colors on page load  */
+.bar:nth-of-type(1) {
+  background-color: yellow;
+}
+.bar:nth-of-type(2) {
+  background-color: yellow;
+}
+.bar:nth-of-type(3) {
+  background-color: yellow;
+}
+
+.strength-text {
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+.bar {
+  height: 25px;
+  width: 9px;
+  border: 2px solid #e6e5ea;
+}
+
+/* Submit Button */
+
+button {
+  width: 100%;
+  height: 65px;
+  background-color: var(--utility-color);
+  color: var(--secondary-bg-color);
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  cursor: pointer;
+  transition: background-color 0.4s ease-in-out;
+}
+
+button:hover {
+  background-color: var(--secondary-bg-color);
+  color: var(--utility-color);
+  border: 1px solid var(--utility-color);
+}
+/* Hidden text input  */
+.hidden-text-input {
+  display: none;
+}
+
+/* Media queries */
+
+@media (max-width: 550px) {
+  .container {
+    width: 343px;
+    height: 540px;
+  }
+  .generated-password {
+    font-size: 30px;
+  }
+
+  .copy-section {
+    font-size: 15px;
+  }
+
+  .slider-section {
+    height: 520px;
+  }
+
+  .strength-text {
+    font-size: 16px;
+  }
+}
