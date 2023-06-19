@@ -26,4 +26,4 @@
 If you would like to contribute to the Password Generator project, you're welcome to submit your suggestions or improvements. Fork the repository, make your changes, and submit a pull request. We appreciate your contributions!
 
 ## License
-The Password Generator is released under the (https://opensource.org/license/mit/)[MIT License]. Feel free to use, modify, and distribute the tool as needed.
+The Password Generator is released under the [https://opensource.org/license/mit/](MIT License). Feel free to use, modify, and distribute the tool as needed.
