@@ -75,6 +75,10 @@ lowerCaseLetters.push(String.fromCharCode(i));
       pleaseSelectValue: 'Please select a value greater than 5!',
       pleaseCheckBox: 'Please check a box!',
       copied: 'Copied'
+        ,
+        langLabel: 'Lang:',
+        lang_en: 'English',
+        lang_es: 'Español'
     },
     es: {
       title: 'Generador de Contraseñas',
@@ -93,6 +97,10 @@ lowerCaseLetters.push(String.fromCharCode(i));
       pleaseSelectValue: 'Por favor selecciona un valor mayor a 5!',
       pleaseCheckBox: 'Por favor marca una casilla!',
       copied: 'Copiado'
+        ,
+        langLabel: 'Idioma:',
+        lang_en: 'Inglés',
+        lang_es: 'Español'
     }
   };
 
@@ -116,12 +124,29 @@ lowerCaseLetters.push(String.fromCharCode(i));
     if (!submitButton.disabled) submitButton.innerHTML = getGenerateHTML();
   }
 
-  // Hook language selector if present
+  // Hook language selector: persist selection and auto-detect
   const langSelect = document.getElementById('lang-select');
   if (langSelect) {
-    langSelect.value = currentLang;
-    langSelect.addEventListener('change', (e) => translatePage(e.target.value));
+    langSelect.addEventListener('change', (e) => {
+      const v = e.target.value;
+      try { localStorage.setItem('lang', v); } catch (e) {}
+      translatePage(v);
+    });
   }
+
+  // Detect saved language or use navigator language
+  (function detectAndApplyLang() {
+    const saved = (() => { try { return localStorage.getItem('lang'); } catch (e) { return null; } })();
+    if (saved && translations[saved]) {
+      currentLang = saved;
+    } else {
+      const nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+      currentLang = nav.startsWith('es') ? 'es' : 'en';
+      try { localStorage.setItem('lang', currentLang); } catch (e) {}
+    }
+    if (langSelect) langSelect.value = currentLang;
+    translatePage(currentLang);
+  })();
   // Set initial value
   sliderInput.value = 5;
   
