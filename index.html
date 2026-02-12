@@ -10,10 +10,17 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="./css/styles.css" />
-    <title>Password Generator Random </title>
+    <title data-i18n="title">Password Generator Random</title>
   </head>
   <body>
-    <h2 class="main-heading">Password Generator Random</h2>
+    <h2 class="main-heading" data-i18n="mainHeading">Password Generator Random</h2>
+    <div class="lang-selector">
+      <label for="lang-select">Lang:</label>
+      <select id="lang-select">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+      </select>
+    </div>
     <main class="container">
       <form id="submit">
         <input type="text" class="hidden-text-input" />
@@ -26,7 +33,7 @@
         </div>
         <div class="slider-section">
           <div class="character-length-section">
-            <p>Character length</p>
+            <p data-i18n="characterLength">Character length</p>
             <span class="slider-value">5</span>
           </div>
           <input
@@ -40,22 +47,22 @@
           />
           <div class="checkbox">
             <input id="uppercase" type="checkbox" checked />
-            <label for="uppercase">Include Uppercase Letters</label>
+            <label for="uppercase" data-i18n="includeUppercase">Include Uppercase Letters</label>
           </div>
           <div class="checkbox">
             <input id="lowercase" type="checkbox" checked />
-            <label for="lowercase">Include Lowercase Letters</label>
+            <label for="lowercase" data-i18n="includeLowercase">Include Lowercase Letters</label>
           </div>
           <div class="checkbox">
             <input id="numbers" type="checkbox" checked />
-            <label for="numbers">Include Numbers</label>
+            <label for="numbers" data-i18n="includeNumbers">Include Numbers</label>
           </div>
           <div class="checkbox">
             <input id="symbols" type="checkbox" />
-            <label for="symbols">Include Symbols</label>
+            <label for="symbols" data-i18n="includeSymbols">Include Symbols</label>
           </div>
           <div class="strength-section">
-            <p>STRENGTH</p>
+            <p data-i18n="strengthLabel">STRENGTH</p>
             <div class="strength-power-section">
               <span class="strength-text">Medium</span>
               <div class="strength-bars">
