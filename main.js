@@ -57,6 +57,71 @@ lowerCaseLetters.push(String.fromCharCode(i));
   const copyText = document.querySelector(".copy-confirmation-text");
   const hiddenInput = document.querySelector(".hidden-text-input");
   
+  const translations = {
+    en: {
+      title: 'Password Generator Random',
+      mainHeading: 'Password Generator Random',
+      characterLength: 'Character length',
+      includeUppercase: 'Include Uppercase Letters',
+      includeLowercase: 'Include Lowercase Letters',
+      includeNumbers: 'Include Numbers',
+      includeSymbols: 'Include Symbols',
+      strengthLabel: 'STRENGTH',
+      strengthTooWeak: 'Too Weak!',
+      strengthWeak: 'Weak',
+      strengthMedium: 'Medium',
+      strengthStrong: 'Strong',
+      generate: 'GENERATE',
+      pleaseSelectValue: 'Please select a value greater than 5!',
+      pleaseCheckBox: 'Please check a box!',
+      copied: 'Copied'
+    },
+    es: {
+      title: 'Generador de Contraseñas',
+      mainHeading: 'Generador de Contraseñas',
+      characterLength: 'Longitud de caracteres',
+      includeUppercase: 'Incluir mayúsculas',
+      includeLowercase: 'Incluir minúsculas',
+      includeNumbers: 'Incluir números',
+      includeSymbols: 'Incluir símbolos',
+      strengthLabel: 'FUERZA',
+      strengthTooWeak: 'Muy Débil!',
+      strengthWeak: 'Débil',
+      strengthMedium: 'Media',
+      strengthStrong: 'Fuerte',
+      generate: 'GENERAR',
+      pleaseSelectValue: 'Por favor selecciona un valor mayor a 5!',
+      pleaseCheckBox: 'Por favor marca una casilla!',
+      copied: 'Copiado'
+    }
+  };
+
+  let currentLang = 'en';
+
+  function getGenerateHTML() {
+    return `${translations[currentLang].generate} <i class="fas fa-angle-right"></i>`;
+  }
+
+  function translatePage(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    const elems = document.querySelectorAll('[data-i18n]');
+    elems.forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang] && translations[lang][key]) {
+        el.textContent = translations[lang][key];
+      }
+    });
+    document.title = translations[lang].title || document.title;
+    if (!submitButton.disabled) submitButton.innerHTML = getGenerateHTML();
+  }
+
+  // Hook language selector if present
+  const langSelect = document.getElementById('lang-select');
+  if (langSelect) {
+    langSelect.value = currentLang;
+    langSelect.addEventListener('change', (e) => translatePage(e.target.value));
+  }
   // Set initial value
   sliderInput.value = 5;
   
@@ -101,7 +166,7 @@ lowerCaseLetters.push(String.fromCharCode(i));
       hiddenInput.select();
       hiddenInput.setSelectionRange(0, 99999);
       navigator.clipboard.writeText(hiddenInput.value);
-      copyText.textContent = "Copied";
+      copyText.textContent = translations[currentLang].copied;
     });
   });
   
@@ -116,16 +181,16 @@ lowerCaseLetters.push(String.fromCharCode(i));
     }
     if (sliderInput.value < 5) {
       submitButton.disabled = true;
-      submitButton.textContent = "Please select a value greater than 5!";
+      submitButton.textContent = translations[currentLang].pleaseSelectValue;
     }
     if (checkedBoxes.length === 0 && sliderInput.value >= 5) {
       submitButton.disabled = true;
-      submitButton.innerHTML = `Please check a box!`;
+      submitButton.textContent = translations[currentLang].pleaseCheckBox;
     }
-  
+
     if (checkedBoxes.length > 0 && sliderInput.value >= 5) {
       submitButton.disabled = false;
-      submitButton.innerHTML = `GENERATE <i class="fas fa-angle-right"></i>`;
+      submitButton.innerHTML = getGenerateHTML();
     }
   });
   
@@ -152,18 +217,18 @@ lowerCaseLetters.push(String.fromCharCode(i));
   
       if (checkedBoxes.length - 1 === 0) {
         strengthBarArray[0].style.backgroundColor = "red";
-        strengthText.textContent = "Too Weak!";
+        strengthText.textContent = translations[currentLang].strengthTooWeak;
       }
       if (checkedBoxes.length - 1 === 1) {
         strengthBarArray[0].style.backgroundColor = "orange";
         strengthBarArray[1].style.backgroundColor = "orange";
-        strengthText.textContent = "Weak";
+        strengthText.textContent = translations[currentLang].strengthWeak;
       }
       if (checkedBoxes.length - 1 === 2) {
         strengthBarArray[0].style.backgroundColor = "yellow";
         strengthBarArray[1].style.backgroundColor = "yellow";
         strengthBarArray[2].style.backgroundColor = "yellow";
-        strengthText.textContent = "Medium";
+        strengthText.textContent = translations[currentLang].strengthMedium;
       }
   
       if (checkedBoxes.length - 1 > 2) {
@@ -171,26 +236,26 @@ lowerCaseLetters.push(String.fromCharCode(i));
         strengthBarArray[1].style.backgroundColor = "green";
         strengthBarArray[2].style.backgroundColor = "green";
         strengthBarArray[3].style.backgroundColor = "green";
-        strengthText.textContent = "Strong";
+        strengthText.textContent = translations[currentLang].strengthStrong;
       }
   
       if (checkedBoxes.length === 0) {
         submitButton.disabled = true;
-        submitButton.textContent = "Please check a box!";
+        submitButton.textContent = translations[currentLang].pleaseCheckBox;
       }
   
       if (sliderInput.value < 5 && checkedBoxes.length === 0) {
         submitButton.disabled = true;
-        submitButton.textContent = "Please select a value greater than 5!";
+        submitButton.textContent = translations[currentLang].pleaseSelectValue;
       }
   
       if (checkedBoxes.length > 0 && sliderInput.value >= 5) {
         submitButton.disabled = false;
-        submitButton.innerHTML = `GENERATE <i class="fas fa-angle-right"></i>`;
+        submitButton.innerHTML = getGenerateHTML();
       }
       if (checkedBoxes.length > 0 && sliderInput.value >= 5) {
         submitButton.disabled = false;
-        submitButton.innerHTML = `GENERATE <i class="fas fa-angle-right"></i>`;
+        submitButton.innerHTML = getGenerateHTML();
       }
     });
   });
