@@ -15,10 +15,10 @@
   <body>
     <h2 class="main-heading" data-i18n="mainHeading">Password Generator Random</h2>
     <div class="lang-selector">
-      <label for="lang-select">Lang:</label>
+      <label for="lang-select" data-i18n="langLabel">Lang:</label>
       <select id="lang-select">
-        <option value="en">English</option>
-        <option value="es">Español</option>
+        <option value="en" data-i18n="lang_en">English</option>
+        <option value="es" data-i18n="lang_es">Español</option>
       </select>
     </div>
     <main class="container">
@@ -64,7 +64,7 @@
           <div class="strength-section">
             <p data-i18n="strengthLabel">STRENGTH</p>
             <div class="strength-power-section">
-              <span class="strength-text">Medium</span>
+              <span class="strength-text" data-i18n="strengthMedium">Medium</span>
               <div class="strength-bars">
                 <div class="bar"></div>
                 <div class="bar"></div>
@@ -74,7 +74,7 @@
             </div>
           </div>
           <button class="submit-btn" type="submit">
-            GENERATE <i class="fas fa-angle-right"></i>
+            <span data-i18n="generate">GENERATE</span> <i class="fas fa-angle-right"></i>
           </button>
         </div>
       </form>
